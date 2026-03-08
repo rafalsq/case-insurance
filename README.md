@@ -156,11 +156,12 @@ This is based on Shapley values from cooperative game theory — each feature's 
 
 Raw SHAP values are model-specific and not directly comparable across claim types. We normalize them:
 
+For each resident, the normalized SHAP values sum to **100%**, representing the percentage contribution of each feature to that prediction. This allows comparing feature importance across different claim models (e.g., "age contributes 12% to fall predictions vs. 3% to elopement predictions").
+
 ```
 normalized_SHAP_i = |SHAP_i| / Σ|SHAP_all| × 100%
 ```
 
-For each resident, the normalized SHAP values sum to **100%**, representing the percentage contribution of each feature to that prediction. This allows comparing feature importance across different claim models (e.g., "age contributes 12% to fall predictions vs. 3% to elopement predictions").
 ---
 
 ## Setup
@@ -226,11 +227,17 @@ jupyter notebook notebooks/05_analysis_all_claims.ipynb
 ## Overall Results
 
 Fall - It seems that keeping a lookout for Active Orders, expecially when is a diatery order, those client seem to fall more in the next month.
+
 Wound - Clients with previoes incidents of wound have more probability of having wounds in the future.
+
 Return-to-Hospital - The amount of days the person stays in the facility, more RTH claims they have, this is the main culprit from the analysis. But the track record of having Hopital Admissions have also a big impact.
+
 Altercation - Pacients that just came to the nursing home don't have much altercation. What it seems is that people with history of altercations (trouble makers) are the one to keep a lookout for. It seems that people who ask for medicine more often, probably depending on the medicine, have more altercation.
+
 Medication Error - This happens mainly with people with previoes medication errors, watch out places and residents when medication error happens once.
+
 Elopement - Happens with people that stay long in the nursing home and have of history of incidents and factors. The more the resident has problems in the nursing home, the more chance for him to elope.
+
 Choking - It seems that people with Genitourinary  diseases and people with more order from pharmacy happen to be a hazard to choke. But the data sample is small to have any type of conclusion to that end.
 
 ---
